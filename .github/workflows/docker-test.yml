@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build --tag heonie/docker-react-template -f Dockerfile.dev .
-      - name: Rund the Docker image and do the test
-        run: docker run heonie/docker-react-template npm run test -- --coverage
+      - name: Run the Docker image and do the test
+        run: docker run -e CI=true heonie/docker-react-template npm run test -- --coverage
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
